@@ -10,7 +10,7 @@ import {Provider} from 'react-redux';
  
 
 import createRootReducer from 'reducers';
-import Layout from 'containers/layout';
+import routes from 'routes'
 
 
 const history = createBrowserHistory()
@@ -23,7 +23,7 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      <Layout />
+      {routes}
     </ConnectedRouter>
   </Provider>,
 document.getElementById('root')
