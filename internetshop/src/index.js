@@ -7,10 +7,12 @@ import thunk from 'redux-thunk';
 import { routerMiddleware, ConnectedRouter } from 'connected-react-router';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import {Provider} from 'react-redux';
+// import {Switch, Route} from 'react-router-dom';
+import {Switch, Route} from 'react-router';
  
-
+import Phones from 'containers/phones';
+import Phone from 'containers/phone';
 import createRootReducer from 'reducers';
-import routes from 'routes'
 
 
 const history = createBrowserHistory()
@@ -23,7 +25,12 @@ const store = createStore(
 ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
-      {routes}
+      
+      <Switch>
+          <Route path='/' component={Phones} exact />
+          <Route path='/phones/:id' component={Phone} />
+      </Switch>
+      
     </ConnectedRouter>
   </Provider>,
 document.getElementById('root')
